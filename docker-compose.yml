@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  debugger:
+    image: dev
+    build: .
+    environment:
+      NODE_ENV: development
+      PORT: 3001
+    ports:
+      - 3001:3001
+      - 9222:9222
+    command: node --inspect=0.0.0.0:9222 index.js

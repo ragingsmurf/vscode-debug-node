@@ -1,0 +1,28 @@
+{
+  "name": "vscode-debug-node",
+  "version": "1.0.0",
+  "description": "Attach to Node debugger against various environments.",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "mocha app/**/*spec.js",
+    "nodemon": "nodemon app/index.js",
+    "debug": "nodemon --inspect=0.0.0.0:9222 --nolazy app/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ragingsmurf/vscode-debug-node.git"
+  },
+  "keywords": [
+    "VSCode",
+    "Debug"
+  ],
+  "author": "James Davis <ragingsmurf@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ragingsmurf/vscode-debug-node/issues"
+  },
+  "homepage": "https://github.com/ragingsmurf/vscode-debug-node#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

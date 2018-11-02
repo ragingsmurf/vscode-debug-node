@@ -1,0 +1,34 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+      {
+          "label": "compose-up",
+          "command": "/bin/bash",
+          "args": [
+            "-c", 
+            "eval $(docker-machine env debugger) && docker-compose -f docker-compose.yml up -d --build"
+          ],
+          "isBackground": false
+        },
+        {
+          "label": "compose-down",
+          "command": "/bin/bash",
+          "args": [
+            "-c", 
+            "eval $(docker-machine env debugger) && docker-compose down"
+          ],
+          "isBackground": false
+        },
+        {
+          "label": "nvm-install",
+          "command": "/bin/bash",
+          "args": [
+            "-c", 
+            "source ~/.nvm/nvm.sh && nvm install"
+          ],
+          "isBackground": false
+        }
+  ]
+}

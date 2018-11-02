@@ -1,0 +1,54 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+      {
+          "type": "node",
+          "request": "attach",
+          "name": "Debug Docker",
+          "preLaunchTask": "compose-up",
+          "postDebugTask": "compose-down",
+          "port": 9222,
+          "restart": false,
+          "address": "192.168.99.100",
+          "timeout": 30000,
+          "localRoot": "${workspaceFolder}/app",
+          "remoteRoot": "/usr/src/app",
+          "outFiles": ["${workspaceFolder}"],
+          "internalConsoleOptions": "openOnFirstSessionStart"
+        },
+        {
+          "type": "node",
+          "request": "launch",
+          "name": "Debug Nodemon",
+          "runtimeExecutable": "/bin/bash",
+          "runtimeArgs": ["-c", "source ~/.nvm/nvm.sh && nvm install && npm run debug"],
+          "address": "0.0.0.0",
+          "port": 9222,
+          "localRoot": "${workspaceFolder}/app",
+          "remoteRoot": "${workspaceFolder}/app",
+          "env": { 
+            "NODE_ENV": "development", 
+            "PORT": "3001" 
+          },
+          "console": "integratedTerminal",
+          "internalConsoleOptions": "neverOpen"
+        },
+        {
+          "type": "node",
+          "request": "launch",
+          "name": "mocha ./app/**/*spec.js",
+          "preLaunchTask": "nvm-install",
+          "program": "~/.nvm/versions/node/v10.13.0/bin/_mocha",
+          "stopOnEntry": false,
+          "cwd": "${workspaceRoot}",
+          "args": [
+            "${workspaceRoot}/app/**/*spec.js",
+            "--no-timeouts",
+          ],
+          "env": { "NODE_ENV": "testing" }
+        }
+  ]
+}
